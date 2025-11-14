@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Skeleton from "./Skeleton";
-
+import Image from "next/image";
 export default function Pokemon({name}:{name:string}){
     const [data,setData]=useState<null | {name:string,sprites:{back_default:string}}>(null);
     const [counter,setCounter]=useState(0);
@@ -28,16 +28,23 @@ export default function Pokemon({name}:{name:string}){
     //     </div>
     // )
 if (!data) return <Skeleton />;
+// throw new Error('Error');
     return(
         
 
 <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
     <div className="flex justify-center">
         <a href="#">
-            <img className="rounded-t-lg" 
-            src={data?.sprites.back_default}
-            alt="" />
-        </a>
+            {
+                data &&
+                <Image className="rounded-t-lg" 
+                        src={data!.sprites.back_default}
+                        alt=""
+                        width={120} 
+                        height={80}/>
+                    
+            }
+            </a>
     </div>
     
     <div className="p-5">

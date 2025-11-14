@@ -1,9 +1,16 @@
 import Pokemon from "@/components/Pokemon"
 import Link from "next/link"
+import type { Metadata } from "next";
 
 interface PokemonInterface{
     name:string;
 }
+
+export const metadata:Metadata = {
+    title:"Pokemons",
+    description:"Esto es una página de ejemplo"
+}
+
 const getData = async () =>{
     const resp = await fetch('https://pokeapi.co/api/v2/pokemon');
     const data = await resp.json();
